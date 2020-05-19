@@ -36,6 +36,6 @@ void main()
   	vec4 sobel_v = m[0] + (2.0*m[1]) + m[2] - (m[6] + (2.0*m[7]) + m[8]);
 	vec4 sobel_edge = sqrt((sobel_h * sobel_h) + (sobel_v * sobel_v));
 
-	FragColor = vec4(1.0 + sobel_edge.rgb, 1.0);
+	FragColor = vec4(sobel_edge.rgb, 1.0);
 }
 
