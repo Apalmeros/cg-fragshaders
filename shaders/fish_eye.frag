@@ -20,6 +20,6 @@ void main() {
 
     uv.x = r * cos(phi) + 0.5;
     uv.y = r * sin(phi) + 0.5;
-    vec4 c = texture(image, uv);
+    vec4 c = texture(image, texcoord);
   	FragColor = c;
 }
