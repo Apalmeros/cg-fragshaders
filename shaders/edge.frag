@@ -10,17 +10,6 @@ uniform sampler2D image;
 
 out vec4 FragColor;
 
-void main() 
-{
-	vec4 m[9];
-	get_sample_grad(m, image, texcoord);
-
-	vec4 sobel_h = m[2] + (2.0*m[5]) + m[8] - (m[0] + (2.0*m[3]) + m[6]);
-  	vec4 sobel_v = m[0] + (2.0*m[1]) + m[2] - (m[6] + (2.0*m[7]) + m[8]);
-	vec4 sobel_edge = sqrt((sobel_h * sobel_h) + (sobel_v * sobel_v));
-
-	FragColor = vec4(1.0 - sobel_edge.rgb, 1.0);
-}
 
 void get_sample_grad(inout vec4 m[9], sampler2D image, vec2 texcoord)
 {
@@ -37,3 +26,16 @@ void get_sample_grad(inout vec4 m[9], sampler2D image, vec2 texcoord)
 	m[7] = texture(image, texcoord + vec2(0.0, h));
 	m[8] = texture(image, texcoord + vec2(  w, h));
 }
+
+void main() 
+{
+	vec4 m[9];
+	get_sample_grad(m, image, texcoord);
+
+	vec4 sobel_h = m[2] + (2.0*m[5]) + m[8] - (m[0] + (2.0*m[3]) + m[6]);
+  	vec4 sobel_v = m[0] + (2.0*m[1]) + m[2] - (m[6] + (2.0*m[7]) + m[8]);
+	vec4 sobel_edge = sqrt((sobel_h * sobel_h) + (sobel_v * sobel_v));
+
+	FragColor = vec4(1.0 - sobel_edge.rgb, 1.0);
+}
+
