@@ -44,7 +44,7 @@ void make_kernel(inout vec4 n[9], sampler2D tex, vec2 coord)
 	n[8] = texture(tex, coord + vec2(  w, h));
 }
 
-void main(void) 
+void main() 
 {
 	vec4 n[9];
 	make_kernel( n, image, texcoord);
