@@ -10,6 +10,7 @@ out vec4 FragColor;
 
 const float PI = 3.1415926535;
 
+/*
 void main() {
 
   float aperture = 178.0;
@@ -32,4 +33,19 @@ void main() {
   } else {
 	FragColor = vec4(0.0, 0.0, 0.0, 1.0);
   }
+}
+*/
+
+void main() {
+  vec2 uv;
+  vec2 xy = 2.0 * texcoord - 1.0;
+  float d = length(xy);
+    float z = sqrt(1.0 - d * d);
+    float r = atan(d, z) / PI;
+    float phi = atan(xy.y, xy.x);
+
+    uv.x = r * cos(phi) + 0.5;
+    uv.y = r * sin(phi) + 0.5;
+    vec4 c = texture(image, uv);
+  	FragColor = c;
 }
