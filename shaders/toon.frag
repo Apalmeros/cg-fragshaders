@@ -13,9 +13,8 @@ void main() {
 	float R = (round(Color.r * 4.0)) / 4.0;
 	float G = (round(Color.g * 4.0)) / 4.0;
 	float B = (round(Color.b * 4.0)) / 4.0;
-	float A = (round(Color.a * 4.0)) / 4.0;
 
-	FragColor = vec4(R, G, B, A);
+	FragColor = vec4(R, G, B, Color.a);
 
 	//FragColor = vec4(((round(Color.r * 4.0))/4.0),((round(Color.g * 4.0))/4.0), ((round(Color.b * 4.0))/4.0), 1.0);
 }
